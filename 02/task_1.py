@@ -59,7 +59,7 @@ def calc_recursion():
                         print(number_1 / number_2)
                     except ZeroDivisionError:
                         print("Деление на ноль невозможно")
-        calc()
+        calc_recursion()
 
 
 calc_recursion()
