@@ -15,6 +15,7 @@
 все же немного ускоряет задачу..
 """
 from timeit import timeit
+from collections import Counter
 
 array = [1, 3, 1, 3, 4, 5, 1]
 
@@ -55,9 +56,28 @@ def func_3():
            f'оно появилось в массиве {m} раз(а)'
 
 
+def func_4():
+    m = max(array, key=array.count)
+    return f'Чаще всего встречается число {m}, ' \
+           f'оно появилось в массиве {array.count(m)} раз(а)'
+
+
 print(func_1())
 print(func_2())
 print(func_3())
+print(func_4())
 print(timeit("func_1()", "from __main__ import func_1", number=100000))
 print(timeit("func_2()", "from __main__ import func_2", number=100000))
 print(timeit("func_3()", "from __main__ import func_3", number=100000))
+print(timeit("func_4()", "from __main__ import func_4", number=100000))
+
+'''
+В сравнении с лаконичным и красивым func_4, он однако отрабатывает с той же
+скоростью, по крайней мере на моей машине, что и первый вариант, и с множеством
+все равно быстрее
+
+0.35172200000000003
+0.4781286
+0.2897278
+0.3555474999999999
+'''
