@@ -50,6 +50,22 @@ def search_min_1(lst):
 print(asizeof.asizeof(lst))
 print(asizeof.asizeof(search_min_1(lst)))
 
+
+@profile
+def reverse_number_recursion(num, reverse_num):
+    """Рекурсия"""
+    if num == 0:
+        return f'Перевернутое число: {reverse_num}'
+    else:
+        num, remainder = num // 10, num % 10
+        reverse_num += str(remainder)
+        return reverse_number_recursion(num, reverse_num)
+
+
+num = 12345678901234567890123456789012345678901234567890
+reverse_num = ''
+reverse_number_recursion(num, reverse_num)
+
 '''
 Line #    Mem usage    Increment   Line Contents
 ================================================
@@ -88,6 +104,20 @@ Line #    Mem usage    Increment   Line Contents
 
 
 16
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    12     22.3 MiB     22.2 MiB   @profile
+    13                             def reverse_number_recursion(num, reverse_num):
+    14                                 """Рекурсия"""
+    15     22.3 MiB      0.0 MiB       if num == 0:
+    16     22.3 MiB      0.0 MiB           return f'Перевернутое число: {reverse_num}'
+    17                                 else:
+    18     22.3 MiB      0.0 MiB           num, remainder = num // 10, num % 10
+    19     22.3 MiB      0.0 MiB           reverse_num += str(remainder)
+    20     22.3 MiB      0.0 MiB           return reverse_number_recursion(num, reverse_num)
+
+С рекурсивной функцией везде получается одинаковый результат, тоже пробовала на разных
 '''
 
 '''
